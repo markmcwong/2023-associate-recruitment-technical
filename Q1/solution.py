@@ -1,5 +1,3 @@
-import queue
-
 class Shirt():
     def __init__(self, size):
         self.size = size
@@ -25,7 +23,7 @@ class Shirt():
             return False
 
     def __lt__(self, other):
-        if(self.size == 'M' and other.size == 'L'):
+        if(self.size == 'M' and 'L' in other.size):
             return True
         elif('S' in self.size and ('L' in other.size or 'M' in other.size)):
             return True
@@ -35,6 +33,12 @@ class Shirt():
             return True
         else:
             return False
+
+    def __str__(self):
+        return 'Shirt('+ (self.size) + ')'
+
+    def __repr__(self):
+        return 'Shirt(' + (self.size) + ')'
 
 def main():
     number_of_t_shirts = input()
@@ -49,7 +53,7 @@ def main():
     shirts.sort()
 
     if(number_of_requests > number_of_t_shirts):
-        print("NO")
+        print("No")
         return
 
     for i in request_sizes:
@@ -60,10 +64,10 @@ def main():
                 fulfill = True
                 break
         if(not fulfill):
-            print("NO")
+            print("No")
             return
     
-    print("YES")
+    print("Yes")
     return
 
 if __name__ == "__main__":
