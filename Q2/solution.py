@@ -1,18 +1,3 @@
-# Read data from input file
-# allValid = true
-# errorCodes = []
-# for each record in input file:
-#     allValid = record.isValid
-#     if record.isValid is not true:
-#         errorCodes append error message
-
-# if allValid is true:
-#     print "Yes"
-# else:
-#     print "No"
-#     print errorCodes sepearated by space character
-
-
 class Record():
     def __init__(self, isValid, error = None):
         self.isValid = isValid
@@ -28,11 +13,12 @@ def main():
         args = input().split()
         # records.append(Record(*args[1:]))
         allValid = allValid and (args[1] == 'true')
+        # cover corner case of err code having space as well
         if args[1] == 'false':
-            errorCodes.append(args[2])
+            errorCodes.append((' ').join(args[2:]))
     
     if(allValid):
-        print("YES")
+        print("Yes")
     else:
         print('No')
         print(' '.join(errorCodes))
